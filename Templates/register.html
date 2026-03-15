@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<style>
+
+body{
+background: linear-gradient(to right,#ff7e5f,#feb47b);
+font-family: Arial, sans-serif;
+text-align:center;
+margin-top:120px;
+}
+
+h1{
+color:white;
+font-size:45px;
+text-shadow:3px 3px 6px black;
+}
+
+form{
+background:white;
+padding:30px;
+border-radius:10px;
+width:300px;
+margin:auto;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:5px;
+border:1px solid gray;
+}
+
+button{
+padding:10px 20px;
+background:black;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+button:hover{
+background:red;
+}
+
+a{
+display:block;
+margin-top:20px;
+color:white;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>User Registration</h1>
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+{{ form.username.label }}<br>
+{{ form.username() }}<br>
+
+{{ form.email.label }}<br>
+{{ form.email() }}<br>
+
+{{ form.password.label }}<br>
+{{ form.password() }}<br><br>
+
+{{ form.submit() }}
+
+</form>
+
+<a href="/">Go Back Home</a>
+
+</body>
+</html>
