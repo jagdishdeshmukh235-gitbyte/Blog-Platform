@@ -9,7 +9,7 @@ body{
     background: linear-gradient(to right, #ff7e5f, #feb47b);
     font-family: Arial, sans-serif;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 120px;
 }
 
 h1{
@@ -24,6 +24,19 @@ p{
     font-size: 22px;
 }
 
+/* Links styling */
+a{
+    display: block;
+    margin-top: 15px;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: black;
+}
+
 </style>
 
 </head>
@@ -33,11 +46,11 @@ p{
 <h1>Welcome to Blog Platform</h1>
 <p>This is my first Flask website</p>
 
-</body>
-</html>
-
 <br><br>
 
-<a href="/about" style="font-size:22px;color:white;">
-Go to About Page
-</a>
+<a href="/about">Go to About Page</a>
+<a href="/create">Create Post</a>
+<a href="/posts">View Posts</a>
+
+</body>
+</html>

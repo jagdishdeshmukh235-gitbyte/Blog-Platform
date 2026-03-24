@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from forms import RegisterForm
 from models import db, User
+from models import Post
 
 app = Flask(__name__)
 
@@ -63,6 +64,52 @@ def login():
 @app.route('/logout')
 def logout():
     return "User Logged Out"
+
+@app.route('/create', methods=['GET','POST'])
+def create():
+
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+
+        new_post = Post(title=title, content=content)
+
+        db.session.add(new_post)
+        db.session.commit()
+
+        return render_template("success.html")
+
+    return render_template("create_post.html")
+
+@app.route('/posts')
+def posts():
+    all_posts = Post.query.all()
+    return render_template("posts.html", posts=all_posts)
+
+@app.route('/edit/<int:id>', methods=['GET','POST'])
+def edit(id):
+
+    post = Post.query.get(id)
+
+    if request.method == 'POST':
+        post.title = request.form['title']
+        post.content = request.form['content']
+
+        db.session.commit()
+
+        return "Post Updated"
+
+    return render_template("create_post.html")
+
+@app.route('/delete/<int:id>')
+def delete(id):
+
+    post = Post.query.get(id)
+
+    db.session.delete(post)
+    db.session.commit()
+
+    return "Post Deleted"
 
 if __name__ == '__main__':
     app.run(debug=True)
