@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog Platform</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial;
+    background: linear-gradient(to right, #efff5f, #c77bfe);
+}
+
+/* Navbar */
+.navbar{
+    background:black;
+    padding:15px;
+    text-align:center;
+}
+
+.navbar a{
+    color:white;
+    margin:15px;
+    text-decoration:none;
+    font-size:18px;
+}
+
+.navbar a:hover{
+    color:yellow;
+}
+
+/* Content */
+.content{
+    text-align:center;
+    margin-top:60px;
+}
+
+/* Card Style */
+.card{
+    background:white;
+    width:300px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 4px 10px rgba(24, 132, 102, 0.3);
+}
+
+/* Form */
+input, textarea{
+    width:90%;
+    padding:10px;
+    margin:10px;
+}
+
+button{
+    padding:10px 20px;
+    background:black;
+    color:white;
+    border:none;
+}
+
+button:hover{
+    background:red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+    <a href="/create">Create</a>
+    <a href="/posts">Posts</a>
+</div>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

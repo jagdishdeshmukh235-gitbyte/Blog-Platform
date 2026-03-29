@@ -1,56 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Blog Platform</title>
+{% extends "base.html" %}
 
-<style>
+{% block content %}
 
-body{
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 120px;
-}
+<h1 style="color:white; font-size:50px; text-shadow:3px 3px 6px black;">
+    Welcome to Blog Platform
+</h1>
 
-h1{
-    color: white;
-    font-size: 50px;
-    font-weight: bold;
-    text-shadow: 3px 3px 6px black;
-}
-
-p{
-    color: yellow;
-    font-size: 22px;
-}
-
-/* Links styling */
-a{
-    display: block;
-    margin-top: 15px;
-    font-size: 22px;
-    color: white;
-    text-decoration: none;
-}
-
-a:hover{
-    color: black;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>Welcome to Blog Platform</h1>
-<p>This is my first Flask website</p>
+<p style="color:yellow; font-size:22px;">
+    This is my first Flask website
+</p>
 
 <br><br>
 
-<a href="/about">Go to About Page</a>
-<a href="/create">Create Post</a>
-<a href="/posts">View Posts</a>
+<a href="/about" style="font-size:22px; color:white; display:block; margin-top:10px;">
+    Go to About Page
+</a>
 
-</body>
-</html>
+<a href="/create" style="font-size:22px; color:white; display:block; margin-top:10px;">
+    Create Post
+</a>
+
+<a href="/posts" style="font-size:22px; color:white; display:block; margin-top:10px;">
+    View Posts
+</a>
+
+{% endblock %}

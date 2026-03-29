@@ -1,56 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Create Post</title>
+{% extends "base.html" %}
 
-<style>
-body{
-background: linear-gradient(to right,#ff9966,#ff5e62);
-text-align:center;
-font-family: Arial;
-margin-top:100px;
-}
+{% block content %}
 
-form{
-background:white;
-padding:30px;
-width:300px;
-margin:auto;
-border-radius:10px;
-}
+<h1 style="color:white; text-shadow:3px 3px 6px black;">
+    Create Blog Post
+</h1>
 
-input, textarea{
-width:90%;
-padding:10px;
-margin:10px;
-}
-
-button{
-padding:10px 20px;
-background:black;
-color:white;
-border:none;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>Create Blog Post</h1>
+<div class="card" style="background:white; padding:30px; border-radius:10px;">
 
 <form method="POST">
 
 Title<br>
-<input type="text" name="title"><br>
+<input type="text" name="title" style="width:90%; padding:10px; margin:10px;"><br>
 
 Content<br>
-<textarea name="content"></textarea><br>
+<textarea name="content" style="width:90%; padding:10px; margin:10px;"></textarea><br>
 
-<button type="submit">Post</button>
+<button type="submit" 
+        style="padding:10px 20px; background:black; color:white; border:none;">
+    Post
+</button>
 
 </form>
 
-</body>
-</html>
+</div>
+
+{% endblock %}
