@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="color:white; text-shadow:3px 3px 6px black;">
+    {{ post.title }}
+</h1>
+
+<p style="color:yellow; font-size:20px;">
+    {{ post.content }}
+</p>
+
+<hr>
+
+<h2 style="color:white;">Comments</h2>
+
+{% for comment in comments %}
+<div class="card">
+    <b>{{ comment.username }}</b>
+    <p>{{ comment.content }}</p>
+</div>
+{% endfor %}
+
+<br>
+
+<h3 style="color:white;">Add Comment</h3>
+
+<form method="POST">
+
+<textarea name="content" placeholder="Write your comment"
+          style="width:300px; padding:10px;"></textarea><br>
+
+<button type="submit"
+        style="padding:10px 20px; background:black; color:white;">
+    Comment
+</button>
+
+</form>
+
+<br>
+
+<a href="/posts" style="color:white;">Back to Posts</a>
+
+{% endblock %}

@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from forms import RegisterForm
 from models import db, User
 from models import Post
+from models import Comment
+from flask import session
 
 app = Flask(__name__)
 
@@ -57,12 +59,14 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         if user and user.password == password:
+            session['user'] = user.username 
             return "Login Successful"
 
     return render_template("login.html")
 
 @app.route('/logout')
 def logout():
+    session.pop('user', None)
     return "User Logged Out"
 
 @app.route('/create', methods=['GET','POST'])
@@ -110,6 +114,40 @@ def delete(id):
     db.session.commit()
 
     return "Post Deleted"
+
+@app.route('/post/<int:id>', methods=['GET','POST'])
+def post_detail(id):
+
+    post = Post.query.get(id)
+    comments = Comment.query.filter_by(post_id=id).all()
+
+    if request.method == 'POST':
+
+        if 'user' not in session:
+            return "Please login first"
+
+        content = request.form['content']
+
+        new_comment = Comment(
+            content=content,
+            username=session['user'],
+            post_id=id
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+
+    return render_template("post_detail.html", post=post, comments=comments)
+
+@app.route('/like/<int:id>')
+def like(id):
+
+    post = Post.query.get(id)
+    post.likes += 1
+
+    db.session.commit()
+
+    return "Liked!"
 
 if __name__ == '__main__':
     app.run(debug=True)
