@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="color:white;">Search Results</h1>
+
+{% if query %}
+<p style="color:yellow;">Results for "{{ query }}"</p>
+{% endif %}
+
+{% for post in results %}
+<div class="card">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+</div>
+{% endfor %}
+
+{% if results|length == 0 %}
+<p style="color:white;">No results found</p>
+{% endif %}
+
+{% endblock %}

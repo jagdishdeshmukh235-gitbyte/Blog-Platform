@@ -149,5 +149,19 @@ def like(id):
 
     return "Liked!"
 
+@app.route('/search', methods=['GET'])
+def search():
+
+    query = request.args.get('q')
+
+    if query:
+        results = Post.query.filter(
+            Post.title.contains(query) | Post.content.contains(query)
+        ).all()
+    else:
+        results = []
+
+    return render_template("search.html", results=results, query=query)
+
 if __name__ == '__main__':
     app.run(debug=True)

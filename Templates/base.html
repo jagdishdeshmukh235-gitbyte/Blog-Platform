@@ -63,6 +63,15 @@ button:hover{
     background:red;
 }
 
+input{
+    padding:5px;
+    border-radius:5px;
+}
+
+button{
+    padding:5px 10px;
+}
+
 </style>
 
 </head>
@@ -76,6 +85,12 @@ button:hover{
     <a href="/login">Login</a>
     <a href="/create">Create</a>
     <a href="/posts">Posts</a>
+
+<form action="/search" method="GET" style="display:inline;">
+    <input type="text" name="q" placeholder="Search..." 
+           style="padding:5px;">
+    <button type="submit">Search</button>
+</form>
 </div>
 
 <div class="content">
